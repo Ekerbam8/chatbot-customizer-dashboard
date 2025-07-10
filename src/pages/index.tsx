@@ -6,17 +6,17 @@ const shapeOptions = ["square", "rounded", "circle"];
 const positionOptions = ["bottom-right", "bottom-left"];
 
 export default function CustomizerDashboard() {
-  const [selectedAvatar, setSelectedAvatar] = useState("/avatars/man-avatar.png");
+  const [selectedAvatar, setSelectedAvatar] = useState("/avatars/man.png");
   const [selectedColor, setSelectedColor] = useState("blue");
   const [selectedShape, setSelectedShape] = useState("rounded");
   const [selectedPosition, setSelectedPosition] = useState("bottom-right");
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Chatbot Customizer</h1>
+      <h1 className="text-3xl font-bold mb-6">Customize Your Chatbot</h1>
 
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">1. Choose an Avatar</h2>
+        <h2 className="text-xl font-semibold mb-2">1. Choose Your Avatar</h2>
         <AvatarSelector selected={selectedAvatar} onSelect={setSelectedAvatar} />
       </div>
 

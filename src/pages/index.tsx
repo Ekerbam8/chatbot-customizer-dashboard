@@ -6,7 +6,7 @@ const shapeOptions = ["square", "rounded", "circle"];
 const positionOptions = ["bottom-right", "bottom-left"];
 
 export default function CustomizerDashboard() {
-  const [selectedAvatar, setSelectedAvatar] = useState("public/avatars/dog.png");
+  const [selectedAvatar, setSelectedAvatar] = useState("/avatars/dog.png");
   const [selectedColor, setSelectedColor] = useState("blue");
   const [selectedShape, setSelectedShape] = useState("rounded");
   const [selectedPosition, setSelectedPosition] = useState("bottom-right");
@@ -14,6 +14,10 @@ export default function CustomizerDashboard() {
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Customize Your Chatbot</h1>
+
+      <link rel="preload" href="/avatars/man.png" as="image" />
+      <link rel="preload" href="/avatars/woman.png" as="image" />
+      <link rel="preload" href="/avatars/dog.png" as="image" />
 
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-2">1. Choose Your Avatar</h2>
@@ -40,17 +44,14 @@ export default function CustomizerDashboard() {
         <div className="flex gap-4">
           {shapeOptions.map((shape) => (
             <button
-  className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg"
-  onClick={() =>
-    navigator.clipboard.writeText(
-      JSON.stringify({
-        avatar: selectedAvatar,
-        color: selectedColor,
-        shape: selectedShape,
-        position: selectedPosition,
-      }, null, 2)
-    )
-  }
+              key={shape}
+              onClick={() => setSelectedShape(shape)}
+              className={`px-4 py-2 rounded-lg border ${
+                selectedShape === shape ? "bg-gray-800 text-white" : "bg-gray-100"
+              }`}
+            >
+              {shape}
+            </button>
           ))}
         </div>
       </div>

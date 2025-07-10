@@ -1,10 +1,11 @@
+// src/main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import CustomizerDashboard from "./CustomizerDashboard";
-import "./index.css"; // Make sure this includes Tailwind styles
+import App from "./App";
+import "./index.css"; // optional if using Tailwind
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CustomizerDashboard />
+    <App />
   </React.StrictMode>
 );

@@ -1,29 +1,38 @@
 import React from "react";
 
 interface AvatarSelectorProps {
-  avatar: string;
-  onChange: (avatar: string) => void;
+  selected: string;
+  onSelect: (value: string) => void;
 }
 
-export const AvatarSelector: React.FC<AvatarSelectorProps> = ({ avatar, onChange }) => {
-  const avatars = ["man.svg", "woman.svg"];
+const avatarOptions = [
+  { name: "Cartoon Man", file: "/avatars/man.png" },
+  { name: "Cartoon Woman", file: "/avatars/woman.png" },
+  { name: "Dog", file: "/avatars/dog.png" },
+];
 
+export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
+  selected,
+  onSelect,
+}) => {
   return (
-    <div>
-      <h3 className="text-lg font-semibold mb-2">Select Avatar</h3>
-      <div className="flex gap-4">
-        {avatars.map((img) => (
+    <div className="grid grid-cols-3 gap-4">
+      {avatarOptions.map((avatar) => (
+        <div
+          key={avatar.name}
+          onClick={() => onSelect(avatar.file)}
+          className={`p-2 border-2 rounded-2xl cursor-pointer ${
+            selected === avatar.file ? "border-blue-500" : "border-transparent"
+          } hover:border-gray-400 transition`}
+        >
           <img
-            key={img}
-            src={`/avatars/${img}`}
-            alt={img}
-            onClick={() => onChange(img)}
-            className={`w-16 h-16 rounded-full border-2 cursor-pointer ${
-              avatar === img ? "border-blue-500" : "border-transparent"
-            }`}
+            src={avatar.file}
+            alt={avatar.name}
+            className="w-24 h-24 object-contain mx-auto"
           />
-        ))}
-      </div>
+          <p className="text-center text-sm mt-2">{avatar.name}</p>
+        </div>
+      ))}
     </div>
   );
 };

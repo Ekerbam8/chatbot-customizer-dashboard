@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional custom styles */
+body {
+  @apply bg-gray-50 text-gray-900 font-sans;
+}
+
+button:focus {
+  @apply ring-2 ring-offset-2 ring-indigo-500;
+}

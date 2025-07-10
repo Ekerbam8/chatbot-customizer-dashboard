@@ -1,14 +1,29 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  safelist: [
-    "bg-blue-500",
-    "bg-green-500",
-    "bg-pink-500",
-    "bg-purple-500",
-    "bg-orange-500"
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        blue: {
+          500: "#3b82f6",
+        },
+        green: {
+          500: "#22c55e",
+        },
+        pink: {
+          500: "#ec4899",
+        },
+        purple: {
+          500: "#8b5cf6",
+        },
+        orange: {
+          500: "#f97316",
+        },
+      },
+    },
   },
   plugins: [],
-}
+};

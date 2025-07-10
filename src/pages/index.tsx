@@ -40,14 +40,17 @@ export default function CustomizerDashboard() {
         <div className="flex gap-4">
           {shapeOptions.map((shape) => (
             <button
-              key={shape}
-              onClick={() => setSelectedShape(shape)}
-              className={`px-4 py-2 rounded-lg border ${
-                selectedShape === shape ? "bg-gray-800 text-white" : "bg-gray-100"
-              }`}
-            >
-              {shape}
-            </button>
+  className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg"
+  onClick={() =>
+    navigator.clipboard.writeText(
+      JSON.stringify({
+        avatar: selectedAvatar,
+        color: selectedColor,
+        shape: selectedShape,
+        position: selectedPosition,
+      }, null, 2)
+    )
+  }
           ))}
         </div>
       </div>

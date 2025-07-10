@@ -3,11 +3,13 @@ import { AvatarSelector } from "./components/AvatarSelector";
 
 const colorOptions = ["blue", "green", "pink", "purple", "orange"];
 const shapeOptions = ["square", "rounded", "circle"];
+const positionOptions = ["bottom-right", "bottom-left"];
 
 export default function CustomizerDashboard() {
   const [selectedAvatar, setSelectedAvatar] = useState("/avatars/man-avatar.png");
   const [selectedColor, setSelectedColor] = useState("blue");
   const [selectedShape, setSelectedShape] = useState("rounded");
+  const [selectedPosition, setSelectedPosition] = useState("bottom-right");
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -50,9 +52,30 @@ export default function CustomizerDashboard() {
         </div>
       </div>
 
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-2">4. Choose Chatbot Position</h2>
+        <div className="flex gap-4">
+          {positionOptions.map((position) => (
+            <button
+              key={position}
+              onClick={() => setSelectedPosition(position)}
+              className={`px-4 py-2 rounded-lg border ${
+                selectedPosition === position ? "bg-gray-800 text-white" : "bg-gray-100"
+              }`}
+            >
+              {position.replace("-", " ")}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="border p-6 rounded-xl shadow-lg">
         <h2 className="text-xl font-semibold mb-4">Live Preview</h2>
-        <div className="flex items-center gap-4">
+        <div
+          className={`fixed ${
+            selectedPosition === "bottom-right" ? "right-4" : "left-4"
+          } bottom-4 flex items-center gap-4`}
+        >
           <img
             src={selectedAvatar}
             alt="Chatbot Avatar"

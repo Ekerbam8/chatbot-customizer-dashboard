@@ -6,7 +6,7 @@ const shapeOptions = ["square", "rounded", "circle"];
 const positionOptions = ["bottom-right", "bottom-left"];
 
 export default function CustomizerDashboard() {
-  const [selectedAvatar, setSelectedAvatar] = useState("/avatars/dog.png");
+  const [selectedAvatar, setSelectedAvatar] = useState("public/avatars/dog.png");
   const [selectedColor, setSelectedColor] = useState("blue");
   const [selectedShape, setSelectedShape] = useState("rounded");
   const [selectedPosition, setSelectedPosition] = useState("bottom-right");
